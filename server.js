@@ -7,8 +7,7 @@ const morgan = require("morgan");
 const crypto = require("crypto");
 require("./app/config/passport.js");
 
-const app = express();
-
+const app = express()
 app.use(morgan("combined"));
 
 const allowedDomains = ["http://localhost:5173", "https://dm.adful.io"];
