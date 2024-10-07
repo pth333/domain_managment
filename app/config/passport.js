@@ -7,7 +7,8 @@ require("dotenv").config();
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientID:
+        "987834807877-sjl3onl2tbmhniu1g8c2dkqqb8m6u045.apps.googleusercontent.com",
       clientSecret: process.env.SECRET_GOOGLE,
       callbackURL: "https://dm-api.adful.io/auth/google/callback",
     },
