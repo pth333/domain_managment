@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       googleId: {
         type: Sequelize.STRING,
         allowNull: true,
+        unique: true,
       },
       name: {
         type: Sequelize.STRING,

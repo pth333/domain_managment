@@ -19,6 +19,8 @@ module.exports = (app) => {
       const token = jwt.sign(user, process.env.SECRET_KEY, {
         expiresIn: "2h",
       });
+
+      console.log(token);
       res.redirect(`https://dm.adful.io/dashboard?token=${token}`);
     }
   );

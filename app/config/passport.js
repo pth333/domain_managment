@@ -2,18 +2,18 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const db = require("../models");
 const User = db.users;
-
+require("dotenv").config();
 // Cấu hình Google OAuth Strategy
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "987834807877-sjl3onl2tbmhniu1g8c2dkqqb8m6u045.apps.googleusercontent.com",
+      clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.SECRET_GOOGLE,
       callbackURL: "https://dm-api.adful.io/auth/google/callback",
     },
     async function (accessToken, refreshToken, profile, done) {
-      try { 
+      try {
+        console.log(profile);
         let user = await User.findOne({ where: { googleId: profile.id } });
         if (user) {
           return done(null, user);

@@ -45,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const secret = crypto.randomBytes(64).toString("hex");
 
+
 // Thiết lập session
 app.use(
   session({
