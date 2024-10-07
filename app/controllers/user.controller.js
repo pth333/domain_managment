@@ -104,7 +104,10 @@ exports.create = async (req, res) => {
       phone_number: req.body.phone_number,
     };
 
+    // console.log(user)
     const dataUser = await User.create(user);
+
+    console.log("data user: ",dataUser)
 
     res.status(200).send(dataUser);
   } catch (error) {
@@ -129,6 +132,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   try {
+    // console.log("Info: ", req.body)
     await User.destroy({
       where: { id: req.params.id },
     });

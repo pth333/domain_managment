@@ -7,22 +7,34 @@ const morgan = require("morgan");
 const crypto = require("crypto");
 require("./app/config/passport.js");
 
-const app = express()
+const app = express();
 app.use(morgan("combined"));
 
-const allowedDomains = ["http://localhost:5173", "https://dm.adful.io"];
+// const allowedDomains = [
+//   "http://localhost:5173",
+//   "https://dm.adful.io",
+//   "https://dm-api.adful.io",
+// ];
+
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedDomains.indexOf(origin) !== -1) {
+//         // Nếu origin là undefined (trong trường hợp truy cập từ cùng một domain) hoặc nằm trong danh sách allowedDomains
+//         callback(null, true);
+//       } else {
+//         // Nếu domain không được phép
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedDomains.indexOf(origin) !== -1) {
-        // Nếu origin là undefined (trong trường hợp truy cập từ cùng một domain) hoặc nằm trong danh sách allowedDomains
-        callback(null, true);
-      } else {
-        // Nếu domain không được phép
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

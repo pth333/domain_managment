@@ -19,19 +19,9 @@ module.exports = (app) => {
       const token = jwt.sign(user, process.env.SECRET_KEY, {
         expiresIn: "2h",
       });
-      res.redirect(`http://dm.adful.io/dashboard?token=${token}`);
+      res.redirect(`https://dm.adful.io/dashboard?token=${token}`);
     }
   );
-
-  router.get("/check", (req, res) => {
-    user = req.user;
-    // console.log("User: ", user);
-    if (user) {
-      res.json({ user });
-    } else {
-      res.status(401).end();
-    }
-  });
 
   app.use("/auth", router);
 };
